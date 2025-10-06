@@ -1,10 +1,143 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-  </head>
-  <body>
-    background: red
-    <!-- Your content will go here -->
-  </body>
-</html>
+<body>
+  <!-- Main page background lives on <body> so it fills the viewport -->
+  <style>
+    /* Temporary layout helpers while building */
+    :root { --bg: #0f172a; --card: #111827; --text: #e5e7eb; --muted:#94a3b8; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(60vmax 60vmax at 100% 0%, #1f2937 0%, transparent 60%),
+        radial-gradient(60vmax 60vmax at 0% 100%, #0b1220 0%, transparent 60%),
+        var(--bg);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    /* Centers and constrains page content */
+    .main-container {
+      width: min(680px, 100%);
+      display: grid;
+      gap: 16px;
+      text-align: center;
+    }
+
+    /* Rows */
+    .image-row,
+    .name-row,
+    .social-icons-row,
+    .links-row { padding: 8px 0; }
+
+    .image-row img {
+      width: 128px; height: 128px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 8px 24px rgba(0,0,0,.35);
+    }
+
+    .name-row .name {
+      font-size: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+    .name-row .tagline {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .social-icons-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+    .social-icons-row a {
+      width: 40px; height: 40px;
+      display: inline-grid; place-items: center;
+      border-radius: 999px;
+      background: #0b1220;
+      text-decoration: none;
+      transition: transform .12s ease, background .2s ease;
+      outline: 1px solid rgba(255,255,255,.06);
+    }
+    .social-icons-row a:hover { transform: translateY(-2px); background: #0f172a; }
+
+    .links-row {
+      display: grid;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .links-row a.link-block {
+      display: block;
+      padding: 14px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      background: linear-gradient(180deg, #0f172a, #0b1220);
+      outline: 1px solid rgba(255,255,255,.06);
+      transition: transform .12s ease, outline-color .2s ease, background .2s ease;
+    }
+    .links-row a.link-block:hover { transform: translateY(-2px); outline-color: rgba(255,255,255,.18); }
+  </style>
+
+  <main class="main-container">
+    <!-- image-row: person’s avatar image -->
+    <div class="image-row">
+      <!-- Replace src with your profile image -->
+      <img src="avatar.jpg" alt="Profile avatar">
+      <!-- Example: <!-- <img src="https://your.cdn/avatar.png" alt="Profile avatar"> --> -->
+    </div>
+
+    <!-- name-row: person’s name -->
+    <div class="name-row">
+      <div class="name">Your Name</div>
+      <div class="tagline">Short tagline or role — e.g., Founder @ BTBI • Power BI Consultant</div>
+    </div>
+
+    <!-- social-icons-row: links to social profiles -->
+    <div class="social-icons-row">
+      <!-- Use inline SVGs or <img> icons; replace # with your links -->
+      <a href="#" aria-label="Twitter / X">
+        <!-- Example icon placeholder; swap with your real SVG -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M21.5 6.5c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.2 1.7-2.1-.7.4-1.6.8-2.5 1A3.9 3.9 0 0 0 12 8.8c0 .3 0 .6.1.9-3.2-.2-6-1.7-7.9-4.1-.4.7-.6 1.4-.6 2.2 0 1.5.8 2.8 2 3.6-.6 0-1.2-.2-1.7-.5 0 2.1 1.6 3.8 3.6 4.2-.4.1-.7.1-1.1.1-.3 0-.5 0-.8-.1.5 1.6 2.1 2.8 4 2.9A7.9 7.9 0 0 1 3 19.6c1.8 1.1 3.9 1.8 6.2 1.8 7.4 0 11.4-6.1 11.4-11.4v-.5c.8-.6 1.5-1.3 2-2.1z"/>
+        </svg>
+      </a>
+
+      <a href="#" aria-label="Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm5.8-2.7a1 1 0 1 1-1.6-1.2 1 1 0 0 1 1.6 1.2z"/>
+        </svg>
+      </a>
+
+      <a href="#" aria-label="Subscribe / Ringer">
+        <!-- bell icon -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2a6 6 0 0 0-6 6v3.6c0 .7-.3 1.3-.8 1.7l-1.3 1c-.5.4-.2 1.2.4 1.2h17.4c.7 0 1-.8.4-1.2l-1.3-1a2.2 2.2 0 0 1-.8-1.7V8a6 6 0 0 0-6-6zm0 20a3 3 0 0 0 3-3H9a3 3 0 0 0 3 3z"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- links-row: blocks of links -->
+    <div class="links-row">
+      <a class="link-block" href="#">Latest Project — Power BI Templates</a>
+      <a class="link-block" href="#">Book a Consultation</a>
+      <a class="link-block" href="#">Podcast: Is This Thing On?</a>
+      <!-- Example of commenting out a link you might use later:
+           <!-- <a class="link-block" href="#">Shop — Merch</a> -->
+    </div>
+  </main>
+
+  <!--
+    Aside on commenting:
+    HTML comments: <!-- comment here -->
+    CSS comments:  /* comment here */
+    Most editors: Ctrl+/ (Windows) or Cmd+/ (Mac) toggles comments automatically.
+  -->
+</body>
